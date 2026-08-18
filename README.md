@@ -1,25 +1,40 @@
 # llm-orchestration
 
-Конструктор AI-агентов с визуальным редактором графа: вы собираете workflow из нод (триггеры, LLM, инструменты, действия, RAG, HITL), деплоите его и запускаете через API/UI с логами в реальном времени.
+`llm-orchestration` is a visual AI workflow builder for creating and running agent-based automations.  
+Instead of writing orchestration logic from scratch, you compose a graph of nodes (trigger, LLM, tools, actions, RAG, human-in-the-loop), deploy it, and execute it through UI or API.
 
-Технологии:
-- **Backend:** Flask + Socket.IO (`backend/`)
+The project is designed for fast prototyping of multi-step AI flows with real-time observability: every run can stream execution logs live over WebSocket, making debugging and iteration much easier.
+
+## Tech Stack
+
+- **Backend:** Flask + Flask-SocketIO (`backend/`)
 - **Frontend:** React + Vite (`frontend/`)
+- **Data/State:** local DB files for graph/runtime storage
 
-## Основной функционал
+## Core Functionality
 
-- Визуальный canvas для сборки графа агента (drag-and-drop ноды + связи).
-- CRUD графов: создание, сохранение, загрузка, обновление, удаление.
-- Запуск графа по API и из интерфейса.
-- Live-логи выполнения через WebSocket (Socket.IO).
-- Поддержка RAG: загрузка файлов и использование их в цепочке.
-- Human-in-the-loop (HITL): узлы с участием человека в процессе выполнения.
-- Telegram/Widget интеграции (роутеры и статический виджет в backend).
-- Работа в mock-режиме без ключей и в real-режиме с `OPENAI_API_KEY` / `NVIDIA_API_KEY`.
+- Visual graph editor (drag-and-drop nodes and edges)
+- Graph lifecycle management (create, save, load, update, delete)
+- Graph deployment and execution via REST API
+- Real-time execution logs via Socket.IO
+- RAG support (file upload + retrieval in workflow)
+- Human-in-the-loop (HITL) interaction steps
+- Integrations layer (Telegram routes and embeddable widget assets)
+- Dual operation modes:
+  - **Mock mode** (no API keys, test responses)
+  - **Real mode** (`OPENAI_API_KEY` and/or `NVIDIA_API_KEY`)
 
-## Run locally
+## How It Works
 
-### 1) Backend
+1. Build a workflow graph in the frontend canvas.
+2. Persist/deploy the graph through backend API endpoints.
+3. Execute a graph run with input payload.
+4. Track logs and status updates live in the frontend console.
+5. Iterate on node configuration and graph topology.
+
+## Local Development
+
+### 1) Start Backend
 ```powershell
 cd backend
 python -m venv .venv
@@ -28,27 +43,39 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Backend runs on `http://localhost:8000`.
+Backend URL: `http://localhost:8000`
 
-### 2) Frontend
+### 2) Start Frontend
 ```powershell
 cd frontend
 npm install
 npm run dev
 ```
 
-Frontend runs on `http://localhost:5173`.
+Frontend URL: `http://localhost:5173`
 
-## Что можно улучшить
+## Environment Variables
 
-- Добавить Docker Compose для запуска backend/frontend одной командой.
-- Вынести URL API/Socket в `.env` фронтенда (`VITE_API_URL`, `VITE_SOCKET_URL`) вместо хардкода `localhost:8000`.
-- Добавить полноценные e2e-тесты (например, Playwright) для ключевых пользовательских сценариев.
-- Усилить валидацию графов и обработку ошибок API (единый формат ошибок, кодов и сообщений).
-- Настроить CI (lint + tests + build) и pre-commit hooks для стабильного качества.
-- Добавить базовую авторизацию и разграничение доступа к графам/запускам.
-- Улучшить README скриншотами/диаграммой архитектуры и примерами использования.
+Backend reads variables from `backend/.env`.
 
-## Notes
-- Do not commit secrets from `backend/.env`.
-- Generated files (`node_modules`, `venv`, `*.db`, uploads, logs, build artifacts) are ignored by `.gitignore`.
+Common keys:
+- `OPENAI_API_KEY` (optional, enables OpenAI runtime)
+- `NVIDIA_API_KEY` (optional, enables NVIDIA runtime)
+- `WEBHOOK_BASE_URL` (optional, defaults to local backend URL in code)
+
+If no valid provider key is set, the app falls back to mock behavior.
+
+## Suggested Improvements
+
+- Add **Docker Compose** for one-command startup
+- Move API/Socket endpoints to frontend env variables (`VITE_API_URL`, `VITE_SOCKET_URL`)
+- Add end-to-end tests (Playwright/Cypress) for critical user flows
+- Standardize API error schema and validation messages
+- Add CI pipeline (lint, tests, build) + pre-commit hooks
+- Add authentication and access control for graphs/runs
+- Extend documentation with architecture diagram, screenshots, and example flows
+
+## Repository Notes
+
+- Never commit secrets from `backend/.env`
+- Generated artifacts (`node_modules`, `venv`, `*.db`, uploads, logs, build outputs) are intentionally ignored by `.gitignore`
