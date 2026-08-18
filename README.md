@@ -5,6 +5,9 @@ Instead of writing orchestration logic from scratch, you compose a graph of node
 
 The project is designed for fast prototyping of multi-step AI flows with real-time observability: every run can stream execution logs live over WebSocket, making debugging and iteration much easier.
 
+<img width="2559" height="1271" alt="image" src="https://github.com/user-attachments/assets/9a3f64b1-2f36-4f73-95ca-83b670b4f878" />
+
+
 ## Tech Stack
 
 - **Backend:** Flask + Flask-SocketIO (`backend/`)
