@@ -34,6 +34,11 @@ server.log
 backend/uploads/
 *.tsbuildinfo
 
+# Local helper/debug scripts
+debug_compiler.py
+test_execution.py
+start-backend.bat
+
 # IDE / OS
 .vscode/
 .idea/
