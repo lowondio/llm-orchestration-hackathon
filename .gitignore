@@ -29,6 +29,11 @@ frontend/.env
 *.log
 server.log
 
+# Runtime / generated data
+*.db
+backend/uploads/
+*.tsbuildinfo
+
 # IDE / OS
 .vscode/
 .idea/
