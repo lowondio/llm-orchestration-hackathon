@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Widget Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .instructions {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 16px;
+            border-radius: 4px;
+            margin-top: 24px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #2d3748;
+        }
+        .instructions ol {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            color: #4a5568;
+        }
+        code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">🤖 AI Widget Demo</span>
+        <h1>Welcome to the AI Chat Widget Demo</h1>
+        <p>
+            This page demonstrates the embeddable AI chat widget. Look for the chat button
+            in the bottom-right corner of your screen!
+        </p>
+        <p>
+            Click the button to open the chat interface and start a conversation with the AI assistant.
+            Your conversation history will be saved in your browser's local storage, so you can
+            refresh the page and continue where you left off.
+        </p>
+
+        <div class="instructions">
+            <h3>📋 How to add this widget to your website:</h3>
+            <ol>
+                <li>Create and deploy your AI agent in the graph builder</li>
+                <li>Select the trigger node and choose "Website Widget" as the trigger type</li>
+                <li>Copy the embed code from the property panel</li>
+                <li>Paste the code before the closing <code>&lt;/body&gt;</code> tag on your website</li>
+                <li>That's it! The widget will appear automatically</li>
+            </ol>
+        </div>
+
+        <div class="instructions" style="border-left-color: #48bb78; margin-top: 16px;">
+            <h3>✨ Features:</h3>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>💬 Real-time AI responses</li>
+                <li>💾 Persistent conversation history</li>
+                <li>🎨 Beautiful dark-themed UI</li>
+                <li>📱 Mobile responsive</li>
+                <li>🔒 Secure session management</li>
+                <li>⚡ Fast and lightweight</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- AI Widget Embed Code -->
+    <!-- Replace YOUR_GRAPH_ID with your actual graph ID -->
+    <script src="http://localhost:8000/static/widget.js" data-agent-id="b9d50c16-e428-4b9f-aab1-c736ca57d705"></script>
+</body>
+</html>

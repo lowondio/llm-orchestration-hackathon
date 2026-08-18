@@ -1,0 +1,17 @@
+flask==3.0.0
+flask-cors==4.0.0
+flask-socketio==5.3.6
+python-socketio==5.11.1
+pydantic==2.13.4
+langchain
+langgraph
+langchain-openai
+langchain-nvidia-ai-endpoints
+langchain-community
+duckduckgo-search
+numexpr
+requests
+python-dotenv==1.0.0
+sqlalchemy==2.0.23
+apscheduler==3.10.4
+pypdf
