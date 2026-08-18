@@ -75,7 +75,6 @@ If no valid provider key is set, the app falls back to mock behavior.
 - Standardize API error schema and validation messages
 - Add CI pipeline (lint, tests, build) + pre-commit hooks
 - Add authentication and access control for graphs/runs
-- Extend documentation with architecture diagram, screenshots, and example flows
 
 ## Repository Notes
 
